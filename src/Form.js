@@ -32,8 +32,8 @@ class Form extends Component {
         console.log(this.state)
         //here will connect to the expresjs backend and make an api call
         // let's try to make a fetch request first
-        //axios.post("http://" + process.env.backend_service_host + ":" + process.env.backend_service_port +"/addBook", this.state)
-        axios.post("http://localhost:3000/addBook", this.state)
+        //axios.post("http://localhost:3000/addBook", this.state)
+        axios.post("http://" + process.env.backend_service_host + ":" + process.env.backend_service_port +"/addBook", this.state)
             .then(response => {
                 console.log(response)
             })
