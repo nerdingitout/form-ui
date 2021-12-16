@@ -24,12 +24,15 @@ class Form extends Component {
 
     handleSubmit = event =>{
         alert(`${this.state.bookName} ${this.state.author}`)
-        this.state.book_id = Math.floor(Math.random() * 3000);
+        this.setState({
+            book_id = Math.floor(Math.random() * 3000)
+        })
         event.preventDefault()
         console.log(this.state)
         //here will connect to the expresjs backend and make an api call
         // let's try to make a fetch request first
-        axios.post("http://" + process.env.backend_service_host + ":" + process.env.backend_service_port + "/addBook", this.state)
+        //axios.post("http://" + process.env.backend_service_host + ":" + process.env.backend_service_port +"/addBook", this.state)
+        axios.post("http://localhost:3000/addBook", this.state)
             .then(response => {
                 console.log(response)
             })
