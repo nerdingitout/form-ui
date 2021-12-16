@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import axios from 'axios';
 import './Form.css';
-class Form extends Component {
 
+const backend_url="http://form-bff1-form-ui-test.mycluster-fra05-b3-382931-f8656339b93feef0fdd8e60603bc7a7f-0000.eu-de.containers.appdomain.cloud/addBook";
+
+class Form extends Component {
     constructor(props){
         super(props)
         this.state = {
@@ -28,8 +30,7 @@ class Form extends Component {
         //here will connect to the expresjs backend and make an api call
         // let's try to make a fetch request first
         //axios.post("http://localhost:3000/addBook", this.state)
-        console.log(process.env.backend_service_host);
-        axios.post(process.env.backend_service_host+"/addBook", this.state)
+        axios.post(backend_url, this.state)
             .then(response => {
                 console.log(response)
             })
