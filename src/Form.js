@@ -24,8 +24,9 @@ class Form extends Component {
 
     handleSubmit = event =>{
         alert(`${this.state.bookName} ${this.state.author}`)
+        let book_id_rand = Math.floor(Math.random() * 3000)
         this.setState({
-            book_id = Math.floor(Math.random() * 3000)
+            book_id : book_id_rand 
         })
         event.preventDefault()
         console.log(this.state)
