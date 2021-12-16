@@ -1,14 +1,14 @@
 import React, { Component } from "react";
+import axios from 'axios';
 import './Form.css';
 class Form extends Component {
 
     constructor(props){
         super(props)
         this.state = {
+            book_id: 0 ,
             bookName: '',
-            author: '',
-            comments: '',
-            topic: 'pizza'
+            author: ''
         }
     }
     handlebookNameChange = event =>{
@@ -24,8 +24,18 @@ class Form extends Component {
 
     handleSubmit = event =>{
         alert(`${this.state.bookName} ${this.state.author}`)
+        this.state.book_id = Math.floor(Math.random() * 3000);
+        event.preventDefault()
+        console.log(this.state)
         //here will connect to the expresjs backend and make an api call
         // let's try to make a fetch request first
+        axios.post("http://" + process.env.backend_service_host + ":" + process.env.backend_service_port + "/addBook", this.state)
+            .then(response => {
+                console.log(response)
+            })
+            .catch(error => {
+                console.log(error)
+            })
         
         event.preventDefault()
     }
