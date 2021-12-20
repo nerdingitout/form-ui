@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: form-ui
+  name: form-ui
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: form-ui
+  template:
+    metadata:
+      labels:
+        app: form-ui
+    spec:
+      containers:
+        - image: quay.io/pizachu/form-ui:latest
+          imagePullPolicy: Always
+          name: form-ui
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "8080"
