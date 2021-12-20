@@ -1,0 +1,13 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: form-ui
+  name: form-ui
+spec:
+  port:
+    targetPort: 8080-tcp
+  to:
+    kind: Service
+    name: form-ui
+    weight: 100
